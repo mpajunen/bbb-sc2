@@ -6,7 +6,7 @@ class ExampleBot(sc2.BotAI):
         if iteration == 0:
             print("Game started")
             for worker in self.workers:
-                await self.do(worker.attack(self.enemy_start_locations[0]))
+                self.do(worker.attack(self.enemy_start_locations[0]))
 
     def on_end(self, result):
         print("OnGameEnd() was called.")
