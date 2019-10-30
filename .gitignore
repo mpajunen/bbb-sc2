@@ -105,3 +105,6 @@ venv.bak/
 
 # Windows .bat files
 *.bat
+
+# Visual Studio Code
+.vscode/
