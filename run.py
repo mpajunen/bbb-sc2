@@ -42,6 +42,9 @@ if __name__ == '__main__':
                                                "be run.", action="store_true")
     parser.add_argument("-rt", "--real-time", help="Use real-time mode. Otherwise games will be run as fast as "
                                                    "possible.", action="store_true")
+    parser.add_argument('--ComputerRace', type=str, nargs="?", help='Computer race', default='Random')
+    parser.add_argument('--ComputerDifficulty', type=str, nargs="?", help='Computer difficulty',
+                        default='VeryHard')
 
     args = parser.parse_args()
 
@@ -51,13 +54,16 @@ if __name__ == '__main__':
         result, opponent_id = run_ladder_game(bot)
         print(result, " against opponent ", opponent_id)
     else:
+        difficulty = Difficulty[args.ComputerDifficulty]
+        race = Race[args.ComputerRace]
+
         # Local game
-        print("Starting local game...")
+        print(f"Starting a local game against {args.ComputerDifficulty} {args.ComputerRace}...")
 
         map_name = get_random_map_name()
         print(f"Using map {map_name}")
 
         sc2.run_game(sc2.maps.get(map_name), [
             bot,
-            Computer(Race.Protoss, Difficulty.VeryHard)
+            Computer(race, difficulty)
         ], realtime=args.real_time)
