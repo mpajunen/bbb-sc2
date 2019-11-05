@@ -10,8 +10,9 @@ from sc2.player import Bot, Computer
 
 from __init__ import run_ladder_game
 # Load bot
-from example_bot import ExampleBot
-bot = Bot(Race.Random, ExampleBot())
+from bbbot import BBBot
+
+bot = Bot(Race.Protoss, BBBot())
 
 
 def get_random_map_name() -> str:
