@@ -4,11 +4,11 @@ import os
 import random
 
 import sc2
-from __init__ import run_ladder_game
-from sc2 import Race, Difficulty
-from sc2.player import Bot, Computer
+from sc2 import Difficulty, Race
 from sc2.paths import Paths
+from sc2.player import Bot, Computer
 
+from __init__ import run_ladder_game
 # Load bot
 from example_bot import ExampleBot
 bot = Bot(Race.Random, ExampleBot())
